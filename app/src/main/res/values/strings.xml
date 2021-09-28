@@ -2,6 +2,6 @@
     <string name="app_name">CleanArchitecture</string>
     <string name="get_data">GET DATA</string>
     <string name="save_data">SAVE DATA</string>
-    <string name="put_name">Put name</string>
+    <string name="put_name">Put data</string>
     <string name="no_data">No data</string>
 </resources>
