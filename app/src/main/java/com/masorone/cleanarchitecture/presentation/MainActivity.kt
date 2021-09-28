@@ -8,6 +8,7 @@ import android.widget.EditText
 import android.widget.TextView
 import com.masorone.cleanarchitecture.R
 import com.masorone.cleanarchitecture.data.repository.UserRepositoryImpl
+import com.masorone.cleanarchitecture.data.storage.sharedprefs.SharedPrefUserStorage
 import com.masorone.cleanarchitecture.domain.models.SaveUserNameParam
 import com.masorone.cleanarchitecture.domain.models.UserName
 import com.masorone.cleanarchitecture.domain.usecase.GetUserNameUseCase
@@ -15,9 +16,13 @@ import com.masorone.cleanarchitecture.domain.usecase.SaveUserNameUseCase
 
 class MainActivity : AppCompatActivity() {
 
+    private val sharedPrefUserStorage by lazy {
+        SharedPrefUserStorage(context = applicationContext)
+    }
+
     private val userRepository by lazy(LazyThreadSafetyMode.NONE) {
         UserRepositoryImpl(
-            context = applicationContext
+            userStorage = sharedPrefUserStorage
         )
     }
     private val getUserNameUseCase by lazy(LazyThreadSafetyMode.NONE) {

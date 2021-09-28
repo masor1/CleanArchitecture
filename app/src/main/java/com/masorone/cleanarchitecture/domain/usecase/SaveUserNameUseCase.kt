@@ -6,7 +6,7 @@ import com.masorone.cleanarchitecture.domain.repository.UserRepository
 class SaveUserNameUseCase(private val userRepository: UserRepository) {
 
     fun execute(param: SaveUserNameParam): Boolean {
-        return userRepository.saveName(saveUserNameParam = param)
+        return userRepository.saveName(saveParam = param)
     }
 
 }
