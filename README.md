@@ -1,4 +1,4 @@
-# CleanArchitecture
+# Clean Architecture
 - 👋 Hi, I’m @masor1
 - 👀 I am interested in Android development
 - 🌱 I’m currently learning CleanArchitecture
