@@ -16,20 +16,18 @@ import com.masorone.cleanarchitecture.domain.usecase.SaveUserNameUseCase
 
 class MainActivity : AppCompatActivity() {
 
-    private val sharedPrefUserStorage by lazy {
-        SharedPrefUserStorage(context = applicationContext)
-    }
-
     private val userRepository by lazy(LazyThreadSafetyMode.NONE) {
         UserRepositoryImpl(
-            userStorage = sharedPrefUserStorage
+            userStorage = SharedPrefUserStorage(context = applicationContext)
         )
     }
+
     private val getUserNameUseCase by lazy(LazyThreadSafetyMode.NONE) {
         GetUserNameUseCase(
             userRepository = userRepository
         )
     }
+
     private val saveUserNameUseCase by lazy(LazyThreadSafetyMode.NONE) {
         SaveUserNameUseCase(
             userRepository = userRepository
