@@ -9,32 +9,8 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import com.masorone.cleanarchitecture.R
-import com.masorone.cleanarchitecture.data.repository.UserRepositoryImpl
-import com.masorone.cleanarchitecture.data.storage.sharedprefs.SharedPrefUserStorage
-import com.masorone.cleanarchitecture.domain.models.SaveUserNameParam
-import com.masorone.cleanarchitecture.domain.models.UserName
-import com.masorone.cleanarchitecture.domain.usecase.GetUserNameUseCase
-import com.masorone.cleanarchitecture.domain.usecase.SaveUserNameUseCase
 
 class MainActivity : AppCompatActivity() {
-
-    private val userRepository by lazy(LazyThreadSafetyMode.NONE) {
-        UserRepositoryImpl(
-            userStorage = SharedPrefUserStorage(context = applicationContext)
-        )
-    }
-
-    private val getUserNameUseCase by lazy(LazyThreadSafetyMode.NONE) {
-        GetUserNameUseCase(
-            userRepository = userRepository
-        )
-    }
-
-    private val saveUserNameUseCase by lazy(LazyThreadSafetyMode.NONE) {
-        SaveUserNameUseCase(
-            userRepository = userRepository
-        )
-    }
 
     private lateinit var vm: MainViewModel
 
@@ -55,14 +31,11 @@ class MainActivity : AppCompatActivity() {
 
         saveDataButton.setOnClickListener {
             val text = dataEditText.text.toString()
-            val params = SaveUserNameParam(name = text)
-            val result: Boolean = saveUserNameUseCase.execute(param = params)
-            dataText.text = "save result = $result"
+            dataText.text = vm.save(text)
         }
 
         getDataButton.setOnClickListener {
-            val userName: UserName = getUserNameUseCase.execute()
-            dataText.text = "${userName.firstName} ${userName.lastName}"
+            dataText.text = vm.load()
         }
     }
 }
