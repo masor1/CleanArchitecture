@@ -22,20 +22,48 @@ class MainActivity : AppCompatActivity() {
 
         Log.e("AAA", "Activity created")
 
-        vm = ViewModelProvider(this)[MainViewModel::class.java]
+        vm = ViewModelProvider(this, MainViewModelFactory(this))[MainViewModel::class.java]
 
         val dataText = findViewById<TextView>(R.id.textViewData)
         val dataEditText = findViewById<EditText>(R.id.editTextData)
         val getDataButton = findViewById<Button>(R.id.buttonGetData)
         val saveDataButton = findViewById<Button>(R.id.buttonSaveData)
 
+        vm.resultLive.observe(this, {
+            dataText.text = it
+        })
+
         saveDataButton.setOnClickListener {
-            val text = dataEditText.text.toString()
-            dataText.text = vm.save(text)
+            vm.save(dataEditText.text.toString())
         }
 
         getDataButton.setOnClickListener {
-            dataText.text = vm.load()
+            vm.load()
         }
+    }
+
+    override fun onStop() {
+        Log.e("AAA", "Activity stop")
+        super.onStop()
+    }
+
+    override fun onStart() {
+        Log.e("AAA", "Activity start")
+        super.onStart()
+    }
+
+    override fun onDestroy() {
+        Log.e("AAA", "Activity destroy")
+        super.onDestroy()
+    }
+
+    override fun onResume() {
+        Log.e("AAA", "Activity resume")
+        super.onResume()
+    }
+
+    override fun onRestart() {
+        Log.e("AAA", "Activity restart")
+        super.onRestart()
     }
 }
