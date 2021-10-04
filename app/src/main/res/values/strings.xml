@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">CleanArchitecture</string>
-    <string name="get_data">GET DATA</string>
-    <string name="save_data">SAVE DATA</string>
-    <string name="put_name">Put data</string>
-    <string name="no_data">No data</string>
+    <string name="get_data">GET USER DATA</string>
+    <string name="save_data">SAVE USER DATA</string>
+    <string name="put_first_name">Put firstname</string>
+    <string name="put_last_name">Put firstname</string>
+    <string name="no_first_name">No firstname</string>
+    <string name="no_last_name">No lastname</string>
 </resources>

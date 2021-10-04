@@ -7,54 +7,109 @@
     tools:context=".presentation.MainActivity">
 
 
-    <TextView
-        android:id="@+id/textViewData"
+    <LinearLayout
+        android:id="@+id/linerLText"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_50"
-        android:layout_margin="@dimen/_8"
-        android:gravity="center"
-        android:text="@string/no_data"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textStyle="bold"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textViewFirstName"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50"
+            android:layout_margin="@dimen/_8"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/no_first_name"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textViewLastName"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50"
+            android:layout_margin="@dimen/_8"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/no_last_name"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+    </LinearLayout>
 
     <Button
-        android:id="@+id/buttonGetData"
+        android:id="@+id/buttonGetUser"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_8"
         android:text="@string/get_data"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewData" />
+        app:layout_constraintTop_toBottomOf="@id/linerLText" />
 
-    <EditText
-        android:id="@+id/editTextData"
+    <LinearLayout
+        android:id="@+id/linerLEditText"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_50"
-        android:layout_margin="@dimen/_8"
-        android:ems="10"
-        android:gravity="center"
-        android:hint="@string/put_name"
-        android:inputType="textPersonName"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textStyle="bold"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonGetData"
-        android:autofillHints="true" />
+        app:layout_constraintTop_toBottomOf="@id/buttonGetUser">
+
+        <EditText
+            android:id="@+id/editTextFirstName"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50"
+            android:layout_margin="@dimen/_8"
+            android:layout_weight="1"
+            android:autofillHints="true"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="@string/put_first_name"
+            android:inputType="textPersonName"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/editTextLastName"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50"
+            android:layout_margin="@dimen/_8"
+            android:layout_weight="1"
+            android:autofillHints="true"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="@string/put_last_name"
+            android:inputType="textPersonName"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+    </LinearLayout>
 
     <Button
-        android:id="@+id/buttonSaveData"
+        android:id="@+id/buttonSaveUser"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_8"
         android:text="@string/save_data"
+        app:layout_constraintTop_toBottomOf="@id/linerLEditText" />
+
+    <TextView
+        android:id="@+id/saveResult"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50"
+        android:layout_margin="@dimen/_8"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextData" />
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
