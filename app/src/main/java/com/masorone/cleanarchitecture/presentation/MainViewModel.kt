@@ -22,7 +22,18 @@ class MainViewModel(
     val lastName: LiveData<String> = lastNameMutable
 
     fun save(firstName: String, lastName: String) {
-        val saveUser = SaveUser(firstName = firstName, lastName = lastName)
+        val firstNameSave: String = if (firstName == "") {
+            DEFAULT_FIRSTNAME
+        } else {
+            firstName
+        }
+
+        val lastNameSave: String = if (lastName == "") {
+            DEFAULT_FIRSTNAME
+        } else {
+            lastName
+        }
+        val saveUser = SaveUser(firstName = firstNameSave, lastName = lastNameSave)
         val result: Boolean = saveUserNameUseCase.execute(saveUser = saveUser)
         resultSaveMutable.value = "save result = $result"
     }
@@ -31,5 +42,10 @@ class MainViewModel(
         val userName: GetUser = getUserNameUseCase.execute()
         firstNameMutable.value = userName.firstName
         lastNameMutable.value = userName.lastName
+    }
+
+    companion object {
+        private const val DEFAULT_FIRSTNAME = "NO FIRSTNAME"
+        private const val DEFAULT_LASTNAME = "NO LASTNAME"
     }
 }
